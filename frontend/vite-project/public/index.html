@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLO Detection</title>
+
+    <!-- 加载 onnxruntime-web CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.10.0/dist/onnxruntime-web.min.js"></script>
+
+    <!-- 加载 ort-wasm-simd-threaded.jsep.mjs -->
+    <script type="module" src="/ort-web/ort-wasm-simd-threaded.jsep.mjs"></script>
+
+    <!-- 额外的样式文件，如果有的话 -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>YOLO Object Detection</h1>
+        <input type="file" accept="video/*" id="upload-video" />
+        <div id="preview"></div>
+        <div id="alerts-table">
+            <!-- 显示警报的地方 -->
+        </div>
+    </div>
+
+    <script type="module">
+        // 设置 onnxruntime-web 的 wasm 路径 onnxruntimeWeb.env.wasm.wasmPaths = '/ort-web/'; // 这里可以插入 YOLO 推理的相关代码 // 确保你能在这里调用 WebAssembly 进行推理
+    </script>
+</body>
+
+</html>

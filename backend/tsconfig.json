@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "target": "ES2017",
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "esModuleInterop": true,
+      "strict": true,
+      "outDir": "dist",
+      "baseUrl": "./",
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src/**/*"]
+  }
+  

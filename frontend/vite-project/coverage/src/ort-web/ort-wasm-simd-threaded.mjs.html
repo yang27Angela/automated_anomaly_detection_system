@@ -1,0 +1,295 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/ort-web/ort-wasm-simd-threaded.mjs</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/ort-web</a> ort-wasm-simd-threaded.mjs</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>0/70</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>0/70</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line low'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >var ortWasmThreaded = (() =&gt; {</span></span></span>
+<span class="cstat-no" title="statement not covered" >  var _scriptName = import.meta.url;</span>
+<span class="cstat-no" title="statement not covered" >  </span>
+<span class="cstat-no" title="statement not covered" >  return (</span>
+<span class="cstat-no" title="statement not covered" >async function(moduleArg = {}) {</span>
+<span class="cstat-no" title="statement not covered" >  var moduleRtn;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >var f=moduleArg,aa,ba,ca=new Promise((a,b)=&gt;{aa=a;ba=b}),da="object"==typeof window,k="undefined"!=typeof WorkerGlobalScope,l="object"==typeof process&amp;&amp;"object"==typeof process.versions&amp;&amp;"string"==typeof process.versions.node&amp;&amp;"renderer"!=process.type,m=k&amp;&amp;self.name?.startsWith("em-pthread");if(l){const {createRequire:a}=await import("module");var require=a(import.meta.url),n=require("worker_threads");global.Worker=n.Worker;m=(k=!n.jb)&amp;&amp;"em-pthread"==n.workerData}"use strict";</span>
+<span class="cstat-no" title="statement not covered" >f.mountExternalData=(a,b)=&gt;{a.startsWith("./")&amp;&amp;(a=a.substring(2));(f.Ta||(f.Ta=new Map)).set(a,b)};f.unmountExternalData=()=&gt;{delete f.Ta};var SharedArrayBuffer=globalThis.SharedArrayBuffer??(new WebAssembly.Memory({initial:0,maximum:0,shared:!0})).buffer.constructor,ea=Object.assign({},f),fa="./this.program",q=(a,b)=&gt;{throw b;},r="",ha,t;</span>
+<span class="cstat-no" title="statement not covered" >if(l){var fs=require("fs"),ia=require("path");import.meta.url.startsWith("data:")||(r=ia.dirname(require("url").fileURLToPath(import.meta.url))+"/");t=a=&gt;{a=u(a)?new URL(a):a;return fs.readFileSync(a)};ha=async a=&gt;{a=u(a)?new URL(a):a;return fs.readFileSync(a,void 0)};!f.thisProgram&amp;&amp;1&lt;process.argv.length&amp;&amp;(fa=process.argv[1].replace(/\\/g,"/"));process.argv.slice(2);q=(a,b)=&gt;{process.exitCode=a;throw b;}}else if(da||k)k?r=self.location.href:"undefined"!=typeof document&amp;&amp;document.currentScript&amp;&amp;</span>
+<span class="cstat-no" title="statement not covered" >(r=document.currentScript.src),_scriptName&amp;&amp;(r=_scriptName),r.startsWith("blob:")?r="":r=r.slice(0,r.replace(/[?#].*/,"").lastIndexOf("/")+1),l||(k&amp;&amp;(t=a=&gt;{var b=new XMLHttpRequest;b.open("GET",a,!1);b.responseType="arraybuffer";b.send(null);return new Uint8Array(b.response)}),ha=async a=&gt;{if(u(a))return new Promise((c,d)=&gt;{var e=new XMLHttpRequest;e.open("GET",a,!0);e.responseType="arraybuffer";e.onload=()=&gt;{200==e.status||0==e.status&amp;&amp;e.response?c(e.response):d(e.status)};e.onerror=d;e.send(null)});</span>
+<span class="cstat-no" title="statement not covered" >var b=await fetch(a,{credentials:"same-origin"});if(b.ok)return b.arrayBuffer();throw Error(b.status+" : "+b.url);});var ja=console.log.bind(console),ka=console.error.bind(console);l&amp;&amp;(ja=(...a)=&gt;fs.writeSync(1,a.join(" ")+"\n"),ka=(...a)=&gt;fs.writeSync(2,a.join(" ")+"\n"));var la=ja,w=ka;Object.assign(f,ea);ea=null;var x=f.wasmBinary,y,ma,z=!1,A,B,na,oa,pa,qa,ra,C,sa,u=a=&gt;a.startsWith("file://");function D(){y.buffer!=B.buffer&amp;&amp;E();return B}function F(){y.buffer!=B.buffer&amp;&amp;E();return na}</span>
+<span class="cstat-no" title="statement not covered" >function ta(){y.buffer!=B.buffer&amp;&amp;E();return oa}function G(){y.buffer!=B.buffer&amp;&amp;E();return pa}function H(){y.buffer!=B.buffer&amp;&amp;E();return qa}function va(){y.buffer!=B.buffer&amp;&amp;E();return ra}function I(){y.buffer!=B.buffer&amp;&amp;E();return sa}</span>
+<span class="cstat-no" title="statement not covered" >if(m){var wa;if(l){var xa=n.parentPort;xa.on("message",b=&gt;onmessage({data:b}));Object.assign(globalThis,{self:global,postMessage:b=&gt;xa.postMessage(b)})}var ya=!1;w=function(...b){b=b.join(" ");l?fs.writeSync(2,b+"\n"):console.error(b)};self.alert=function(...b){postMessage({Sa:"alert",text:b.join(" "),fb:J()})};self.onunhandledrejection=b=&gt;{throw b.reason||b;};function a(b){try{var c=b.data,d=c.Sa;if("load"===d){let e=[];self.onmessage=g=&gt;e.push(g);self.startWorker=()=&gt;{postMessage({Sa:"loaded"});</span>
+<span class="cstat-no" title="statement not covered" >for(let g of e)a(g);self.onmessage=a};for(const g of c.$a)if(!f[g]||f[g].proxy)f[g]=(...h)=&gt;{postMessage({Sa:"callHandler",Za:g,args:h})},"print"==g&amp;&amp;(la=f[g]),"printErr"==g&amp;&amp;(w=f[g]);y=c.hb;E();wa(c.ib)}else if("run"===d){za(c.Ra);Aa(c.Ra,0,0,1,0,0);Ba();Ca(c.Ra);ya||=!0;try{Da(c.cb,c.Wa)}catch(e){if("unwind"!=e)throw e;}}else"setimmediate"!==c.target&amp;&amp;("checkMailbox"===d?ya&amp;&amp;K():d&amp;&amp;(w(`worker: received unknown command ${d}`),w(c)))}catch(e){throw Ea(),e;}}self.onmessage=a}</span>
+<span class="cstat-no" title="statement not covered" >function E(){var a=y.buffer;f.HEAP8=B=new Int8Array(a);f.HEAP16=oa=new Int16Array(a);f.HEAPU8=na=new Uint8Array(a);f.HEAPU16=new Uint16Array(a);f.HEAP32=pa=new Int32Array(a);f.HEAPU32=qa=new Uint32Array(a);f.HEAPF32=ra=new Float32Array(a);f.HEAPF64=sa=new Float64Array(a);f.HEAP64=C=new BigInt64Array(a);f.HEAPU64=new BigUint64Array(a)}m||(y=new WebAssembly.Memory({initial:256,maximum:65536,shared:!0}),E());function Fa(){m?startWorker(f):L.$()}var M=0,N=null;</span>
+<span class="cstat-no" title="statement not covered" >function Ga(){M--;if(0==M&amp;&amp;N){var a=N;N=null;a()}}function O(a){a="Aborted("+a+")";w(a);z=!0;a=new WebAssembly.RuntimeError(a+". Build with -sASSERTIONS for more info.");ba(a);throw a;}var Ha;async function Ia(a){if(!x)try{var b=await ha(a);return new Uint8Array(b)}catch{}if(a==Ha&amp;&amp;x)a=new Uint8Array(x);else if(t)a=t(a);else throw"both async and sync fetching of the wasm failed";return a}</span>
+<span class="cstat-no" title="statement not covered" >async function Ja(a,b){try{var c=await Ia(a);return await WebAssembly.instantiate(c,b)}catch(d){w(`failed to asynchronously prepare wasm: ${d}`),O(d)}}async function Ka(a){var b=Ha;if(!x&amp;&amp;"function"==typeof WebAssembly.instantiateStreaming&amp;&amp;!u(b)&amp;&amp;!l)try{var c=fetch(b,{credentials:"same-origin"});return await WebAssembly.instantiateStreaming(c,a)}catch(d){w(`wasm streaming compile failed: ${d}`),w("falling back to ArrayBuffer instantiation")}return Ja(b,a)}</span>
+<span class="cstat-no" title="statement not covered" >function La(){Ma={j:Na,b:Oa,E:Pa,f:Qa,U:Ra,A:Sa,C:Ta,V:Ua,S:Va,L:Wa,R:Xa,n:Ya,B:Za,y:$a,T:ab,z:bb,_:cb,O:db,w:eb,F:fb,t:gb,i:hb,N:Ca,X:ib,I:jb,J:kb,K:lb,G:mb,H:nb,u:ob,q:pb,Z:qb,o:rb,k:sb,Y:tb,d:ub,W:vb,x:wb,c:xb,e:yb,h:zb,v:Ab,s:Bb,r:Cb,P:Db,Q:Eb,D:Fb,g:Gb,m:Hb,M:Ib,l:Jb,a:y,p:Kb};return{a:Ma}}</span>
+<span class="cstat-no" title="statement not covered" >var Mb={785212:(a,b,c,d,e)=&gt;{if("undefined"==typeof f||!f.Ta)return 1;a=Lb(Number(a&gt;&gt;&gt;0));a.startsWith("./")&amp;&amp;(a=a.substring(2));a=f.Ta.get(a);if(!a)return 2;b=Number(b&gt;&gt;&gt;0);c=Number(c&gt;&gt;&gt;0);d=Number(d&gt;&gt;&gt;0);if(b+c&gt;a.byteLength)return 3;try{const g=a.subarray(b,b+c);switch(e){case 0:F().set(g,d&gt;&gt;&gt;0);break;case 1:f.kb(d,g);break;default:return 4}return 0}catch{return 4}},785927:()=&gt;"undefined"!==typeof wasmOffsetConverter};function Na(){return"undefined"!==typeof wasmOffsetConverter}</span>
+<span class="cstat-no" title="statement not covered" >class Nb{name="ExitStatus";constructor(a){this.message=`Program terminated with exit(${a})`;this.status=a}}</span>
+<span class="cstat-no" title="statement not covered" >var Ob=a=&gt;{a.terminate();a.onmessage=()=&gt;{}},Pb=[],Sb=a=&gt;{0==Q.length&amp;&amp;(Qb(),Rb(Q[0]));var b=Q.pop();if(!b)return 6;R.push(b);S[a.Ra]=b;b.Ra=a.Ra;var c={Sa:"run",cb:a.bb,Wa:a.Wa,Ra:a.Ra};l&amp;&amp;b.unref();b.postMessage(c,a.Ya);return 0},T=0,V=(a,b,...c)=&gt;{for(var d=2*c.length,e=Tb(),g=Ub(8*d),h=g&gt;&gt;&gt;3,p=0;p&lt;c.length;p++){var v=c[p];"bigint"==typeof v?(C[h+2*p]=1n,C[h+2*p+1]=v):(C[h+2*p]=0n,I()[h+2*p+1&gt;&gt;&gt;0]=v)}a=Vb(a,0,d,g,b);U(e);return a};</span>
+<span class="cstat-no" title="statement not covered" >function Kb(a){if(m)return V(0,1,a);A=a;if(!(0&lt;T)){for(var b of R)Ob(b);for(b of Q)Ob(b);Q=[];R=[];S={};z=!0}q(a,new Nb(a))}function Wb(a){if(m)return V(1,0,a);Fb(a)}var Fb=a=&gt;{A=a;if(m)throw Wb(a),"unwind";Kb(a)},Q=[],R=[],Xb=[],S={};function Yb(){for(var a=f.numThreads-1;a--;)Qb();Pb.unshift(()=&gt;{M++;Zb(()=&gt;Ga())})}var ac=a=&gt;{var b=a.Ra;delete S[b];Q.push(a);R.splice(R.indexOf(a),1);a.Ra=0;$b(b)};function Ba(){Xb.forEach(a=&gt;a())}</span>
+<span class="cstat-no" title="statement not covered" >var Rb=a=&gt;new Promise(b=&gt;{a.onmessage=g=&gt;{g=g.data;var h=g.Sa;if(g.Ua&amp;&amp;g.Ua!=J()){var p=S[g.Ua];p?p.postMessage(g,g.Ya):w(`Internal error! Worker sent a message "${h}" to target pthread ${g.Ua}, but that thread no longer exists!`)}else if("checkMailbox"===h)K();else if("spawnThread"===h)Sb(g);else if("cleanupThread"===h)ac(S[g.eb]);else if("loaded"===h)a.loaded=!0,l&amp;&amp;!a.Ra&amp;&amp;a.unref(),b(a);else if("alert"===h)alert(`Thread ${g.fb}: ${g.text}`);else if("setimmediate"===g.target)a.postMessage(g);else if("callHandler"===</span>
+<span class="cstat-no" title="statement not covered" >h)f[g.Za](...g.args);else h&amp;&amp;w(`worker sent an unknown command ${h}`)};a.onerror=g=&gt;{w(`${"worker sent an error!"} ${g.filename}:${g.lineno}: ${g.message}`);throw g;};l&amp;&amp;(a.on("message",g=&gt;a.onmessage({data:g})),a.on("error",g=&gt;a.onerror(g)));var c=[],d=[],e;for(e of d)f.propertyIsEnumerable(e)&amp;&amp;c.push(e);a.postMessage({Sa:"load",$a:c,hb:y,ib:ma})});function Zb(a){m?a():Promise.all(Q.map(Rb)).then(a)}</span>
+<span class="cstat-no" title="statement not covered" >function Qb(){var a=new Worker(new URL(import.meta.url),{type:"module",workerData:"em-pthread",name:"em-pthread"});Q.push(a)}var za=a=&gt;{E();var b=H()[a+52&gt;&gt;&gt;2&gt;&gt;&gt;0];a=H()[a+56&gt;&gt;&gt;2&gt;&gt;&gt;0];bc(b,b-a);U(b)},W=[],cc,Da=(a,b)=&gt;{T=0;var c=W[a];c||(a&gt;=W.length&amp;&amp;(W.length=a+1),W[a]=c=cc.get(a));a=c(b);0&lt;T?A=a:dc(a)};class ec{constructor(a){this.Va=a-24}}var fc=0,gc=0;</span>
+<span class="cstat-no" title="statement not covered" >function Oa(a,b,c){a&gt;&gt;&gt;=0;var d=new ec(a);b&gt;&gt;&gt;=0;c&gt;&gt;&gt;=0;H()[d.Va+16&gt;&gt;&gt;2&gt;&gt;&gt;0]=0;H()[d.Va+4&gt;&gt;&gt;2&gt;&gt;&gt;0]=b;H()[d.Va+8&gt;&gt;&gt;2&gt;&gt;&gt;0]=c;fc=a;gc++;throw fc;}function hc(a,b,c,d){return m?V(2,1,a,b,c,d):Pa(a,b,c,d)}function Pa(a,b,c,d){a&gt;&gt;&gt;=0;b&gt;&gt;&gt;=0;c&gt;&gt;&gt;=0;d&gt;&gt;&gt;=0;if("undefined"==typeof SharedArrayBuffer)return 6;var e=[];if(m&amp;&amp;0===e.length)return hc(a,b,c,d);a={bb:c,Ra:a,Wa:d,Ya:e};return m?(a.Sa="spawnThread",postMessage(a,e),0):Sb(a)}</span>
+<span class="cstat-no" title="statement not covered" >var ic="undefined"!=typeof TextDecoder?new TextDecoder:void 0,jc=(a,b=0,c=NaN)=&gt;{b&gt;&gt;&gt;=0;var d=b+c;for(c=b;a[c]&amp;&amp;!(c&gt;=d);)++c;if(16&lt;c-b&amp;&amp;a.buffer&amp;&amp;ic)return ic.decode(a.buffer instanceof ArrayBuffer?a.subarray(b,c):a.slice(b,c));for(d="";b&lt;c;){var e=a[b++];if(e&amp;128){var g=a[b++]&amp;63;if(192==(e&amp;224))d+=String.fromCharCode((e&amp;31)&lt;&lt;6|g);else{var h=a[b++]&amp;63;e=224==(e&amp;240)?(e&amp;15)&lt;&lt;12|g&lt;&lt;6|h:(e&amp;7)&lt;&lt;18|g&lt;&lt;12|h&lt;&lt;6|a[b++]&amp;63;65536&gt;e?d+=String.fromCharCode(e):(e-=65536,d+=String.fromCharCode(55296|e&gt;&gt;10,56320|</span>
+<span class="cstat-no" title="statement not covered" >e&amp;1023))}}else d+=String.fromCharCode(e)}return d},Lb=(a,b)=&gt;(a&gt;&gt;&gt;=0)?jc(F(),a,b):"";function Qa(a,b,c){return m?V(3,1,a,b,c):0}function Ra(a,b){if(m)return V(4,1,a,b)}</span>
+<span class="cstat-no" title="statement not covered" >var X=(a,b,c)=&gt;{var d=F();b&gt;&gt;&gt;=0;if(0&lt;c){var e=b;c=b+c-1;for(var g=0;g&lt;a.length;++g){var h=a.charCodeAt(g);if(55296&lt;=h&amp;&amp;57343&gt;=h){var p=a.charCodeAt(++g);h=65536+((h&amp;1023)&lt;&lt;10)|p&amp;1023}if(127&gt;=h){if(b&gt;=c)break;d[b++&gt;&gt;&gt;0]=h}else{if(2047&gt;=h){if(b+1&gt;=c)break;d[b++&gt;&gt;&gt;0]=192|h&gt;&gt;6}else{if(65535&gt;=h){if(b+2&gt;=c)break;d[b++&gt;&gt;&gt;0]=224|h&gt;&gt;12}else{if(b+3&gt;=c)break;d[b++&gt;&gt;&gt;0]=240|h&gt;&gt;18;d[b++&gt;&gt;&gt;0]=128|h&gt;&gt;12&amp;63}d[b++&gt;&gt;&gt;0]=128|h&gt;&gt;6&amp;63}d[b++&gt;&gt;&gt;0]=128|h&amp;63}}d[b&gt;&gt;&gt;0]=0;a=b-e}else a=0;return a};</span>
+<span class="cstat-no" title="statement not covered" >function Sa(a,b){if(m)return V(5,1,a,b)}function Ta(a,b,c){if(m)return V(6,1,a,b,c)}function Ua(a,b,c){return m?V(7,1,a,b,c):0}function Va(a,b){if(m)return V(8,1,a,b)}function Wa(a,b,c){if(m)return V(9,1,a,b,c)}function Xa(a,b,c,d){if(m)return V(10,1,a,b,c,d)}function Ya(a,b,c,d){if(m)return V(11,1,a,b,c,d)}function Za(a,b,c,d){if(m)return V(12,1,a,b,c,d)}function $a(a){if(m)return V(13,1,a)}function ab(a,b){if(m)return V(14,1,a,b)}function bb(a,b,c){if(m)return V(15,1,a,b,c)}var cb=()=&gt;O("");</span>
+<span class="cstat-no" title="statement not covered" >function db(a){Aa(a&gt;&gt;&gt;0,!k,1,!da,131072,!1);Ba()}var kc=a=&gt;{if(!z)try{if(a(),!(0&lt;T))try{m?dc(A):Fb(A)}catch(b){b instanceof Nb||"unwind"==b||q(1,b)}}catch(b){b instanceof Nb||"unwind"==b||q(1,b)}};function Ca(a){a&gt;&gt;&gt;=0;"function"===typeof Atomics.gb&amp;&amp;(Atomics.gb(G(),a&gt;&gt;&gt;2,a).value.then(K),a+=128,Atomics.store(G(),a&gt;&gt;&gt;2,1))}var K=()=&gt;{var a=J();a&amp;&amp;(Ca(a),kc(lc))};function eb(a,b){a&gt;&gt;&gt;=0;a==b&gt;&gt;&gt;0?setTimeout(K):m?postMessage({Ua:a,Sa:"checkMailbox"}):(a=S[a])&amp;&amp;a.postMessage({Sa:"checkMailbox"})}</span>
+<span class="cstat-no" title="statement not covered" >var mc=[];function fb(a,b,c,d,e){b&gt;&gt;&gt;=0;d/=2;mc.length=d;c=e&gt;&gt;&gt;0&gt;&gt;&gt;3;for(e=0;e&lt;d;e++)mc[e]=C[c+2*e]?C[c+2*e+1]:I()[c+2*e+1&gt;&gt;&gt;0];return(b?Mb[b]:nc[a])(...mc)}var gb=()=&gt;{T=0};function hb(a){a&gt;&gt;&gt;=0;m?postMessage({Sa:"cleanupThread",eb:a}):ac(S[a])}function ib(a){l&amp;&amp;S[a&gt;&gt;&gt;0].ref()}</span>
+<span class="cstat-no" title="statement not covered" >function jb(a,b){a=-9007199254740992&gt;a||9007199254740992&lt;a?NaN:Number(a);b&gt;&gt;&gt;=0;a=new Date(1E3*a);G()[b&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCSeconds();G()[b+4&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCMinutes();G()[b+8&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCHours();G()[b+12&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCDate();G()[b+16&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCMonth();G()[b+20&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCFullYear()-1900;G()[b+24&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getUTCDay();a=(a.getTime()-Date.UTC(a.getUTCFullYear(),0,1,0,0,0,0))/864E5|0;G()[b+28&gt;&gt;&gt;2&gt;&gt;&gt;0]=a}</span>
+<span class="cstat-no" title="statement not covered" >var oc=a=&gt;0===a%4&amp;&amp;(0!==a%100||0===a%400),pc=[0,31,60,91,121,152,182,213,244,274,305,335],qc=[0,31,59,90,120,151,181,212,243,273,304,334];</span>
+<span class="cstat-no" title="statement not covered" >function kb(a,b){a=-9007199254740992&gt;a||9007199254740992&lt;a?NaN:Number(a);b&gt;&gt;&gt;=0;a=new Date(1E3*a);G()[b&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getSeconds();G()[b+4&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getMinutes();G()[b+8&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getHours();G()[b+12&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getDate();G()[b+16&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getMonth();G()[b+20&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getFullYear()-1900;G()[b+24&gt;&gt;&gt;2&gt;&gt;&gt;0]=a.getDay();var c=(oc(a.getFullYear())?pc:qc)[a.getMonth()]+a.getDate()-1|0;G()[b+28&gt;&gt;&gt;2&gt;&gt;&gt;0]=c;G()[b+36&gt;&gt;&gt;2&gt;&gt;&gt;0]=-(60*a.getTimezoneOffset());c=(new Date(a.getFullYear(),6,1)).getTimezoneOffset();</span>
+<span class="cstat-no" title="statement not covered" >var d=(new Date(a.getFullYear(),0,1)).getTimezoneOffset();a=(c!=d&amp;&amp;a.getTimezoneOffset()==Math.min(d,c))|0;G()[b+32&gt;&gt;&gt;2&gt;&gt;&gt;0]=a}</span>
+<span class="cstat-no" title="statement not covered" >function lb(a){a&gt;&gt;&gt;=0;var b=new Date(G()[a+20&gt;&gt;&gt;2&gt;&gt;&gt;0]+1900,G()[a+16&gt;&gt;&gt;2&gt;&gt;&gt;0],G()[a+12&gt;&gt;&gt;2&gt;&gt;&gt;0],G()[a+8&gt;&gt;&gt;2&gt;&gt;&gt;0],G()[a+4&gt;&gt;&gt;2&gt;&gt;&gt;0],G()[a&gt;&gt;&gt;2&gt;&gt;&gt;0],0),c=G()[a+32&gt;&gt;&gt;2&gt;&gt;&gt;0],d=b.getTimezoneOffset(),e=(new Date(b.getFullYear(),6,1)).getTimezoneOffset(),g=(new Date(b.getFullYear(),0,1)).getTimezoneOffset(),h=Math.min(g,e);0&gt;c?G()[a+32&gt;&gt;&gt;2&gt;&gt;&gt;0]=Number(e!=g&amp;&amp;h==d):0&lt;c!=(h==d)&amp;&amp;(e=Math.max(g,e),b.setTime(b.getTime()+6E4*((0&lt;c?h:e)-d)));G()[a+24&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getDay();c=(oc(b.getFullYear())?pc:qc)[b.getMonth()]+</span>
+<span class="cstat-no" title="statement not covered" >b.getDate()-1|0;G()[a+28&gt;&gt;&gt;2&gt;&gt;&gt;0]=c;G()[a&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getSeconds();G()[a+4&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getMinutes();G()[a+8&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getHours();G()[a+12&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getDate();G()[a+16&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getMonth();G()[a+20&gt;&gt;&gt;2&gt;&gt;&gt;0]=b.getYear();a=b.getTime();return BigInt(isNaN(a)?-1:a/1E3)}function mb(a,b,c,d,e,g,h){return m?V(16,1,a,b,c,d,e,g,h):-52}function nb(a,b,c,d,e,g){if(m)return V(17,1,a,b,c,d,e,g)}var Y={},xb=()=&gt;performance.timeOrigin+performance.now();</span>
+<span class="cstat-no" title="statement not covered" >function ob(a,b){if(m)return V(18,1,a,b);Y[a]&amp;&amp;(clearTimeout(Y[a].id),delete Y[a]);if(!b)return 0;var c=setTimeout(()=&gt;{delete Y[a];kc(()=&gt;rc(a,performance.timeOrigin+performance.now()))},b);Y[a]={id:c,lb:b};return 0}</span>
+<span class="cstat-no" title="statement not covered" >function pb(a,b,c,d){a&gt;&gt;&gt;=0;b&gt;&gt;&gt;=0;c&gt;&gt;&gt;=0;d&gt;&gt;&gt;=0;var e=(new Date).getFullYear(),g=(new Date(e,0,1)).getTimezoneOffset();e=(new Date(e,6,1)).getTimezoneOffset();var h=Math.max(g,e);H()[a&gt;&gt;&gt;2&gt;&gt;&gt;0]=60*h;G()[b&gt;&gt;&gt;2&gt;&gt;&gt;0]=Number(g!=e);b=p=&gt;{var v=Math.abs(p);return`UTC${0&lt;=p?"-":"+"}${String(Math.floor(v/60)).padStart(2,"0")}${String(v%60).padStart(2,"0")}`};a=b(g);b=b(e);e&lt;g?(X(a,c,17),X(b,d,17)):(X(a,d,17),X(b,c,17))}var tb=()=&gt;Date.now(),sc=1;</span>
+<span class="cstat-no" title="statement not covered" >function qb(a,b,c){if(!(0&lt;=a&amp;&amp;3&gt;=a))return 28;if(0===a)a=Date.now();else if(sc)a=performance.timeOrigin+performance.now();else return 52;C[c&gt;&gt;&gt;0&gt;&gt;&gt;3]=BigInt(Math.round(1E6*a));return 0}var tc=[];function rb(a,b,c){a&gt;&gt;&gt;=0;b&gt;&gt;&gt;=0;c&gt;&gt;&gt;=0;tc.length=0;for(var d;d=F()[b++&gt;&gt;&gt;0];){var e=105!=d;e&amp;=112!=d;c+=e&amp;&amp;c%8?4:0;tc.push(112==d?H()[c&gt;&gt;&gt;2&gt;&gt;&gt;0]:106==d?C[c&gt;&gt;&gt;3]:105==d?G()[c&gt;&gt;&gt;2&gt;&gt;&gt;0]:I()[c&gt;&gt;&gt;3&gt;&gt;&gt;0]);c+=e?8:4}return Mb[a](...tc)}var sb=()=&gt;{};function ub(a,b){return w(Lb(a&gt;&gt;&gt;0,b&gt;&gt;&gt;0))}</span>
+<span class="cstat-no" title="statement not covered" >var vb=()=&gt;{T+=1;throw"unwind";};function wb(){return 4294901760}var yb=()=&gt;l?require("os").cpus().length:navigator.hardwareConcurrency;function zb(){O("Cannot use emscripten_pc_get_function without -sUSE_OFFSET_CONVERTER");return 0}</span>
+<span class="cstat-no" title="statement not covered" >function Ab(a){a&gt;&gt;&gt;=0;var b=F().length;if(a&lt;=b||4294901760&lt;a)return!1;for(var c=1;4&gt;=c;c*=2){var d=b*(1+.2/c);d=Math.min(d,a+100663296);a:{d=(Math.min(4294901760,65536*Math.ceil(Math.max(a,d)/65536))-y.buffer.byteLength+65535)/65536|0;try{y.grow(d);E();var e=1;break a}catch(g){}e=void 0}if(e)return!0}return!1}var uc=()=&gt;{O("Cannot use convertFrameToPC (needed by __builtin_return_address) without -sUSE_OFFSET_CONVERTER");return 0},Z={},vc=a=&gt;{a.forEach(b=&gt;{var c=uc();c&amp;&amp;(Z[c]=b)})};</span>
+<span class="cstat-no" title="statement not covered" >function Bb(){var a=Error().stack.toString().split("\n");"Error"==a[0]&amp;&amp;a.shift();vc(a);Z.Xa=uc();Z.ab=a;return Z.Xa}function Cb(a,b,c){a&gt;&gt;&gt;=0;b&gt;&gt;&gt;=0;if(Z.Xa==a)var d=Z.ab;else d=Error().stack.toString().split("\n"),"Error"==d[0]&amp;&amp;d.shift(),vc(d);for(var e=3;d[e]&amp;&amp;uc()!=a;)++e;for(a=0;a&lt;c&amp;&amp;d[a+e];++a)G()[b+4*a&gt;&gt;&gt;2&gt;&gt;&gt;0]=uc();return a}</span>
+<span class="cstat-no" title="statement not covered" >var wc={},yc=()=&gt;{if(!xc){var a={USER:"web_user",LOGNAME:"web_user",PATH:"/",PWD:"/",HOME:"/home/web_user",LANG:("object"==typeof navigator&amp;&amp;navigator.languages&amp;&amp;navigator.languages[0]||"C").replace("-","_")+".UTF-8",_:fa||"./this.program"},b;for(b in wc)void 0===wc[b]?delete a[b]:a[b]=wc[b];var c=[];for(b in a)c.push(`${b}=${a[b]}`);xc=c}return xc},xc;</span>
+<span class="cstat-no" title="statement not covered" >function Db(a,b){if(m)return V(19,1,a,b);a&gt;&gt;&gt;=0;b&gt;&gt;&gt;=0;var c=0;yc().forEach((d,e)=&gt;{var g=b+c;e=H()[a+4*e&gt;&gt;&gt;2&gt;&gt;&gt;0]=g;for(g=0;g&lt;d.length;++g)D()[e++&gt;&gt;&gt;0]=d.charCodeAt(g);D()[e&gt;&gt;&gt;0]=0;c+=d.length+1});return 0}function Eb(a,b){if(m)return V(20,1,a,b);a&gt;&gt;&gt;=0;b&gt;&gt;&gt;=0;var c=yc();H()[a&gt;&gt;&gt;2&gt;&gt;&gt;0]=c.length;var d=0;c.forEach(e=&gt;d+=e.length+1);H()[b&gt;&gt;&gt;2&gt;&gt;&gt;0]=d;return 0}function Gb(a){return m?V(21,1,a):52}function Hb(a,b,c,d){return m?V(22,1,a,b,c,d):52}function Ib(a,b,c,d){return m?V(23,1,a,b,c,d):70}</span>
+<span class="cstat-no" title="statement not covered" >var zc=[null,[],[]];function Jb(a,b,c,d){if(m)return V(24,1,a,b,c,d);b&gt;&gt;&gt;=0;c&gt;&gt;&gt;=0;d&gt;&gt;&gt;=0;for(var e=0,g=0;g&lt;c;g++){var h=H()[b&gt;&gt;&gt;2&gt;&gt;&gt;0],p=H()[b+4&gt;&gt;&gt;2&gt;&gt;&gt;0];b+=8;for(var v=0;v&lt;p;v++){var P=F()[h+v&gt;&gt;&gt;0],ua=zc[a];0===P||10===P?((1===a?la:w)(jc(ua)),ua.length=0):ua.push(P)}e+=p}H()[d&gt;&gt;&gt;2&gt;&gt;&gt;0]=e;return 0}m||Yb();var nc=[Kb,Wb,hc,Qa,Ra,Sa,Ta,Ua,Va,Wa,Xa,Ya,Za,$a,ab,bb,mb,nb,ob,Db,Eb,Gb,Hb,Ib,Jb],Ma,L;</span>
+<span class="cstat-no" title="statement not covered" >(async function(){function a(d,e){L=d.exports;L=Ac();Xb.push(L.Ea);cc=L.Fa;ma=e;Ga();return L}M++;var b=La();if(f.instantiateWasm)return new Promise(d=&gt;{f.instantiateWasm(b,(e,g)=&gt;{a(e,g);d(e.exports)})});if(m)return new Promise(d=&gt;{wa=e=&gt;{var g=new WebAssembly.Instance(e,La());d(a(g,e))}});Ha??=f.locateFile?f.locateFile?f.locateFile("ort-wasm-simd-threaded.wasm",r):r+"ort-wasm-simd-threaded.wasm":(new URL("ort-wasm-simd-threaded.wasm",import.meta.url)).href;try{var c=await Ka(b);return a(c.instance,</span>
+<span class="cstat-no" title="statement not covered" >c.module)}catch(d){return ba(d),Promise.reject(d)}})();f._OrtInit=(a,b)=&gt;(f._OrtInit=L.aa)(a,b);f._OrtGetLastError=(a,b)=&gt;(f._OrtGetLastError=L.ba)(a,b);f._OrtCreateSessionOptions=(a,b,c,d,e,g,h,p,v,P)=&gt;(f._OrtCreateSessionOptions=L.ca)(a,b,c,d,e,g,h,p,v,P);f._OrtAppendExecutionProvider=(a,b)=&gt;(f._OrtAppendExecutionProvider=L.da)(a,b);f._OrtAddFreeDimensionOverride=(a,b,c)=&gt;(f._OrtAddFreeDimensionOverride=L.ea)(a,b,c);f._OrtAddSessionConfigEntry=(a,b,c)=&gt;(f._OrtAddSessionConfigEntry=L.fa)(a,b,c);</span>
+<span class="cstat-no" title="statement not covered" >f._OrtReleaseSessionOptions=a=&gt;(f._OrtReleaseSessionOptions=L.ga)(a);f._OrtCreateSession=(a,b,c)=&gt;(f._OrtCreateSession=L.ha)(a,b,c);f._OrtReleaseSession=a=&gt;(f._OrtReleaseSession=L.ia)(a);f._OrtGetInputOutputCount=(a,b,c)=&gt;(f._OrtGetInputOutputCount=L.ja)(a,b,c);f._OrtGetInputName=(a,b)=&gt;(f._OrtGetInputName=L.ka)(a,b);f._OrtGetOutputName=(a,b)=&gt;(f._OrtGetOutputName=L.la)(a,b);f._OrtFree=a=&gt;(f._OrtFree=L.ma)(a);f._OrtCreateTensor=(a,b,c,d,e,g)=&gt;(f._OrtCreateTensor=L.na)(a,b,c,d,e,g);</span>
+<span class="cstat-no" title="statement not covered" >f._OrtGetTensorData=(a,b,c,d,e)=&gt;(f._OrtGetTensorData=L.oa)(a,b,c,d,e);f._OrtReleaseTensor=a=&gt;(f._OrtReleaseTensor=L.pa)(a);f._OrtCreateRunOptions=(a,b,c,d)=&gt;(f._OrtCreateRunOptions=L.qa)(a,b,c,d);f._OrtAddRunConfigEntry=(a,b,c)=&gt;(f._OrtAddRunConfigEntry=L.ra)(a,b,c);f._OrtReleaseRunOptions=a=&gt;(f._OrtReleaseRunOptions=L.sa)(a);f._OrtCreateBinding=a=&gt;(f._OrtCreateBinding=L.ta)(a);f._OrtBindInput=(a,b,c)=&gt;(f._OrtBindInput=L.ua)(a,b,c);f._OrtBindOutput=(a,b,c,d)=&gt;(f._OrtBindOutput=L.va)(a,b,c,d);</span>
+<span class="cstat-no" title="statement not covered" >f._OrtClearBoundOutputs=a=&gt;(f._OrtClearBoundOutputs=L.wa)(a);f._OrtReleaseBinding=a=&gt;(f._OrtReleaseBinding=L.xa)(a);f._OrtRunWithBinding=(a,b,c,d,e)=&gt;(f._OrtRunWithBinding=L.ya)(a,b,c,d,e);f._OrtRun=(a,b,c,d,e,g,h,p)=&gt;(f._OrtRun=L.za)(a,b,c,d,e,g,h,p);f._OrtEndProfiling=a=&gt;(f._OrtEndProfiling=L.Aa)(a);var J=()=&gt;(J=L.Ba)();f._free=a=&gt;(f._free=L.Ca)(a);f._malloc=a=&gt;(f._malloc=L.Da)(a);</span>
+<span class="cstat-no" title="statement not covered" >var Aa=(a,b,c,d,e,g)=&gt;(Aa=L.Ga)(a,b,c,d,e,g),Ea=()=&gt;(Ea=L.Ha)(),Vb=(a,b,c,d,e)=&gt;(Vb=L.Ia)(a,b,c,d,e),$b=a=&gt;($b=L.Ja)(a),dc=a=&gt;(dc=L.Ka)(a),rc=(a,b)=&gt;(rc=L.La)(a,b),lc=()=&gt;(lc=L.Ma)(),bc=(a,b)=&gt;(bc=L.Na)(a,b),U=a=&gt;(U=L.Oa)(a),Ub=a=&gt;(Ub=L.Pa)(a),Tb=()=&gt;(Tb=L.Qa)();function Ac(){var a=L;a=Object.assign({},a);var b=d=&gt;()=&gt;d()&gt;&gt;&gt;0,c=d=&gt;e=&gt;d(e)&gt;&gt;&gt;0;a.Ba=b(a.Ba);a.Da=c(a.Da);a.Pa=c(a.Pa);a.Qa=b(a.Qa);a.__cxa_get_exception_ptr=c(a.__cxa_get_exception_ptr);return a}f.stackSave=()=&gt;Tb();f.stackRestore=a=&gt;U(a);</span>
+<span class="cstat-no" title="statement not covered" >f.stackAlloc=a=&gt;Ub(a);f.setValue=function(a,b,c="i8"){c.endsWith("*")&amp;&amp;(c="*");switch(c){case "i1":D()[a&gt;&gt;&gt;0]=b;break;case "i8":D()[a&gt;&gt;&gt;0]=b;break;case "i16":ta()[a&gt;&gt;&gt;1&gt;&gt;&gt;0]=b;break;case "i32":G()[a&gt;&gt;&gt;2&gt;&gt;&gt;0]=b;break;case "i64":C[a&gt;&gt;&gt;3]=BigInt(b);break;case "float":va()[a&gt;&gt;&gt;2&gt;&gt;&gt;0]=b;break;case "double":I()[a&gt;&gt;&gt;3&gt;&gt;&gt;0]=b;break;case "*":H()[a&gt;&gt;&gt;2&gt;&gt;&gt;0]=b;break;default:O(`invalid type for setValue: ${c}`)}};</span>
+<span class="cstat-no" title="statement not covered" >f.getValue=function(a,b="i8"){b.endsWith("*")&amp;&amp;(b="*");switch(b){case "i1":return D()[a&gt;&gt;&gt;0];case "i8":return D()[a&gt;&gt;&gt;0];case "i16":return ta()[a&gt;&gt;&gt;1&gt;&gt;&gt;0];case "i32":return G()[a&gt;&gt;&gt;2&gt;&gt;&gt;0];case "i64":return C[a&gt;&gt;&gt;3];case "float":return va()[a&gt;&gt;&gt;2&gt;&gt;&gt;0];case "double":return I()[a&gt;&gt;&gt;3&gt;&gt;&gt;0];case "*":return H()[a&gt;&gt;&gt;2&gt;&gt;&gt;0];default:O(`invalid type for getValue: ${b}`)}};f.UTF8ToString=Lb;f.stringToUTF8=X;</span>
+<span class="cstat-no" title="statement not covered" >f.lengthBytesUTF8=a=&gt;{for(var b=0,c=0;c&lt;a.length;++c){var d=a.charCodeAt(c);127&gt;=d?b++:2047&gt;=d?b+=2:55296&lt;=d&amp;&amp;57343&gt;=d?(b+=4,++c):b+=3}return b};function Bc(){if(0&lt;M)N=Bc;else if(m)aa(f),Fa();else{for(;0&lt;Pb.length;)Pb.shift()(f);0&lt;M?N=Bc:(f.calledRun=!0,z||(Fa(),aa(f)))}}Bc();"use strict";f.PTR_SIZE=4;moduleRtn=ca;</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return moduleRtn;</span>
+<span class="cstat-no" title="statement not covered" >}</span>
+<span class="cstat-no" title="statement not covered" >);</span>
+<span class="cstat-no" title="statement not covered" >})();</span>
+<span class="cstat-no" title="statement not covered" >export default ortWasmThreaded;</span>
+<span class="cstat-no" title="statement not covered" >var isPthread = globalThis.self?.name?.startsWith('em-pthread');</span>
+<span class="cstat-no" title="statement not covered" >var isNode = typeof globalThis.process?.versions?.node == 'string';</span>
+<span class="cstat-no" title="statement not covered" >if (isNode) isPthread = (await import('worker_threads')).workerData === 'em-pthread';</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >// When running as a pthread, construct a new instance on startup</span>
+<span class="cstat-no" title="statement not covered" >isPthread &amp;&amp; ortWasmThreaded();</span>
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2025-05-01T21:16:56.373Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    
