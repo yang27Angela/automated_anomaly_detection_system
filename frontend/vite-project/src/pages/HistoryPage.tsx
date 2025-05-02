@@ -6,6 +6,8 @@ import {
 import AlertTable, { Alert } from '../components/AlertTable';
 import AlertDetailDialog from '../components/AlertDetailDialog';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 export default function HistoryPage() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
@@ -19,10 +21,10 @@ export default function HistoryPage() {
     const fetchAlerts = async () => {
       setLoading(true);
       try {
-        const res = await fetch("/api/alerts");
+        const res = await fetch(`${API_BASE_URL}/api/alerts`);
         const data = await res.json();
 
-        const normalized: Alert[] = data.alerts.map((a: unknown) => ({
+        const normalized: Alert[] = data.alerts.map((a: any) => ({
           ...a,
           alertType: a.alertType || a.alert_type,
           details: typeof a.details === 'string' ? JSON.parse(a.details) : a.details,
@@ -43,7 +45,7 @@ export default function HistoryPage() {
 
   const handleUpdateAlert = async (updated: Alert) => {
     try {
-      await fetch(`/api/alerts/${updated.id}`, {
+      await fetch(`${API_BASE_URL}/api/alerts/${updated.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updated)
@@ -60,7 +62,7 @@ export default function HistoryPage() {
 
   const handleDeleteAlert = async (id: string) => {
     try {
-      await fetch(`/api/alerts/${id}`, { method: 'DELETE' });
+      await fetch(`${API_BASE_URL}/api/alerts/${id}`, { method: 'DELETE' });
       setAlerts((prev) => prev.filter((a) => a.id !== id));
       setSnackbarMessage('🗑️ Alert deleted');
     } catch (err) {

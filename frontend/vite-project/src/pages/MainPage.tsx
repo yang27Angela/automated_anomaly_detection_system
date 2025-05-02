@@ -14,6 +14,8 @@ import AlertDetailDialog from '../components/AlertDetailDialog';
 import { extractFramesFromVideo } from '../utils/frameExtractor';
 import { runYOLOOnFrames } from '../utils/runYOLOOnFrames';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 export default function MainPage() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
@@ -38,7 +40,7 @@ export default function MainPage() {
         created_at: new Date().toISOString()
       }));
 
-      const res = await fetch('/api/alerts/upload', {
+      const res = await fetch(`${API_BASE_URL}/api/alerts/upload`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ alerts: alertsWithTimestamps })
@@ -91,49 +93,4 @@ export default function MainPage() {
       <TextField
         label="Search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        fullWidth
-        style={{ marginBottom: 8 }}
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={requirePerson}
-            onChange={(e) => setRequirePerson(e.target.checked)}
-          />
-        }
-        label="Require Person"
-      />
-      <FormControlLabel
-        control={
-          <Checkbox
-            checked={requireCar}
-            onChange={(e) => setRequireCar(e.target.checked)}
-          />
-        }
-        label="Require Car"
-      />
-
-      <Button
-        variant="outlined"
-        style={{ margin: '16px 0' }}
-        onClick={() => window.location.href = '/history'}
-      >
-        View History
-      </Button>
-
-      <AlertTable alerts={filteredAlerts} onRowClick={setSelectedAlert} />
-
-      <AlertDetailDialog
-        open={!!selectedAlert}
-        alert={selectedAlert}
-        onClose={() => setSelectedAlert(null)}
-        readOnly
-      />
-
-      <Snackbar open={!!error} autoHideDuration={4000} onClose={() => setError('')}>
-        <MuiAlert severity="error">{error}</MuiAlert>
-      </Snackbar>
-    </div>
-  );
-}
+        onChange={(
