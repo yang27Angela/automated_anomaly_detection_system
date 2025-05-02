@@ -1,7 +1,7 @@
 import * as ort from 'onnxruntime-web';
 import { preprocessImageBitmap } from './preprocess';
 
-ort.env.wasm.wasmPaths = '/public/ort-web/';
+ort.env.wasm.wasmPaths = '/ort-web/';
 ort.env.wasm.numThreads = 1;
 ort.env.wasm.simd = true;
 
