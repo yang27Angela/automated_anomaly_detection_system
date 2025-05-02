@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import AlertTable, { Alert } from '../components/AlertTable';
-import AlertDetailDialog from '../components/AlertDetailDialog';
 import {
   Typography,
   CircularProgress,
@@ -8,8 +6,13 @@ import {
   Checkbox,
   FormControlLabel,
   Snackbar,
+  Button,
   Alert as MuiAlert
 } from '@mui/material';
+import AlertTable, { Alert } from '../components/AlertTable';
+import AlertDetailDialog from '../components/AlertDetailDialog';
+import { extractFramesFromVideo } from '../utils/frameExtractor';
+import { runYOLOOnFrames } from '../utils/runYOLOOnFrames';
 
 export default function MainPage() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
@@ -27,23 +30,30 @@ export default function MainPage() {
     setLoading(true);
     setError('');
     try {
-      const formData = new FormData();
-      formData.append('video', file);
+      const frames = await extractFramesFromVideo(file);
+      const generated = await runYOLOOnFrames(frames);
 
-      const res = await fetch('/api/upload', {
+      const alertsWithTimestamps = generated.map((alert: any): Alert => ({
+        ...alert,
+        created_at: new Date().toISOString()
+      }));
+
+      const res = await fetch('/api/alerts/upload', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ alerts: alertsWithTimestamps })
       });
 
       const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Upload failed');
 
-      if (!res.ok) {
-        throw new Error(data.message || 'Upload failed');
-      }
-
-      setAlerts(data.alerts || []);
+      setAlerts(alertsWithTimestamps);
     } catch (err: unknown) {
-      setError(err.message || 'Unknown error');
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Unknown error');
+      }
     } finally {
       setLoading(false);
     }
@@ -54,9 +64,13 @@ export default function MainPage() {
       !search ||
       a.message?.toLowerCase().includes(search.toLowerCase()) ||
       a.alertType?.toLowerCase().includes(search.toLowerCase());
-    const hasPerson = a.details?.some((d) => d.class === 'person') ?? false;
-    const hasCar = a.details?.some((d) => d.class === 'car') ?? false;
-    return matchSearch && (!requirePerson || hasPerson) && (!requireCar || hasCar);
+
+    const hasPerson = a.details?.some((d) => d.object?.toLowerCase() === 'person') ?? false;
+    const hasCar = a.details?.some((d) => d.object?.toLowerCase() === 'car') ?? false;
+
+    return matchSearch &&
+      (!requirePerson || hasPerson) &&
+      (!requireCar || hasCar);
   });
 
   return (
@@ -64,17 +78,21 @@ export default function MainPage() {
       <Typography variant="h4" gutterBottom>
         Automated Anomaly Detection
       </Typography>
+
       <input
         type="file"
         accept="video/*"
         onChange={handleUpload}
+        disabled={loading}
         style={{ marginBottom: 16 }}
       />
       {loading && <CircularProgress />}
+
       <TextField
         label="Search"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
+        fullWidth
         style={{ marginBottom: 8 }}
       />
       <FormControlLabel
@@ -95,13 +113,24 @@ export default function MainPage() {
         }
         label="Require Car"
       />
+
+      <Button
+        variant="outlined"
+        style={{ margin: '16px 0' }}
+        onClick={() => window.location.href = '/history'}
+      >
+        View History
+      </Button>
+
       <AlertTable alerts={filteredAlerts} onRowClick={setSelectedAlert} />
+
       <AlertDetailDialog
         open={!!selectedAlert}
         alert={selectedAlert}
         onClose={() => setSelectedAlert(null)}
         readOnly
       />
+
       <Snackbar open={!!error} autoHideDuration={4000} onClose={() => setError('')}>
         <MuiAlert severity="error">{error}</MuiAlert>
       </Snackbar>
