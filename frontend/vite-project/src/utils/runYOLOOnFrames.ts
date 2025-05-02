@@ -21,23 +21,34 @@ const labels = [
 ];
 
 export async function runYOLOOnFrames(frames: ImageBitmap[]) {
+  console.log("[debug] Start YOLO inference on frames");
   const session = await ort.InferenceSession.create('/models/yolov5n.onnx');
+  console.log("[debug] ONNX model loaded");
+
   const alerts = [];
 
   for (let i = 0; i < frames.length; i++) {
+    console.log(`[debug] Processing frame ${i + 1}/${frames.length}`);
     const tensorData = await preprocessImageBitmap(frames[i]);
     const inputTensor = new ort.Tensor('float32', tensorData, [1, 3, 640, 640]);
 
     const feeds: Record<string, ort.Tensor> = {};
     feeds[session.inputNames[0]] = inputTensor;
 
+    console.log("[debug] Running session...");
     const results = await session.run(feeds);
-    const output = results[session.outputNames[0]].data as Float32Array;
+
+    const outputName = session.outputNames[0];
+    const output = results[outputName].data as Float32Array;
+    console.log(`[debug] Output tensor name: ${outputName}`);
+    console.log("[debug] Output data length:", output.length);
+    console.log("[debug] Output (first 10 floats):", output.slice(0, 10));
 
     let objects = parseYOLOOutput(output);
+    console.log(`[debug] Detections for frame ${i}:`, objects);
 
-    // fallback if detection result is invalid
     if (!Array.isArray(objects) || objects.length === 0) {
+      console.warn("[warn] No detections found, using fallback");
       objects = [{ object: 'unknown', confidence: 0.0 }];
     }
 
@@ -63,10 +74,10 @@ export async function runYOLOOnFrames(frames: ImageBitmap[]) {
     });
   }
 
+  console.log("[debug] Finished all frames. Total alerts:", alerts.length);
   return alerts;
 }
 
-// Parses the YOLO model output into readable detections
 function parseYOLOOutput(output: Float32Array) {
   const detections = [];
   const numDetections = output.length / 85;
@@ -83,8 +94,9 @@ function parseYOLOOutput(output: Float32Array) {
     }
   }
 
-  // Keep highest confidence per object type
-  return detections.reduce((acc, detection) => {
+  console.log("[debug] Raw detections before filter:", detections);
+
+  const filtered = detections.reduce((acc, detection) => {
     const existing = acc.find(d => d.object === detection.object);
     if (!existing || existing.confidence < detection.confidence) {
       if (existing) acc.splice(acc.indexOf(existing), 1);
@@ -92,4 +104,7 @@ function parseYOLOOutput(output: Float32Array) {
     }
     return acc;
   }, []);
+
+  console.log("[debug] Filtered detections:", filtered);
+  return filtered;
 }
