@@ -1,12 +1,17 @@
-
 import mysql from 'mysql2/promise';
+import dotenv from 'dotenv';
+
+// ✅ 加载 .env 文件
+dotenv.config();
 
 const db = mysql.createPool({
-  host: 'localhost',          // ✅ for local; replace with RDS endpoint when deploying
-  user: 'root',               // ❗ change in prod
-  password: 'root',              // ❗ set env variable in prod
-  database: 'anomaly_system',
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT) || 3306,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
 });
+
 export default db;
