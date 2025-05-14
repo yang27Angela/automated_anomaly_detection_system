@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 test('Successful Upload', async({ page }) => {
     await page.goto('${API_BASE_URL}/api/alerts/upload');
     const uploadInput = page.locator('input[type="file"]');
-    await uploadInput.uploadFile('./path/to/valid-file.mp4');
+    await uploadInput.uploadFile('./test_files/success_file.mp4');
     await expect(page.locator('text="Upload Successful"')).toBeVisible();
 });
 
@@ -12,6 +12,6 @@ test('Successful Upload', async({ page }) => {
 test('File Size Exceeds Limit', async({ page }) => {
     await page.goto('${API_BASE_URL}/api/alerts/upload');
     const uploadInput = page.locator('input[type="file"]');
-    await uploadInput.uploadFile('./path/to/large-file.mp4');
+    await uploadInput.uploadFile('./test_files/large_file.mov');
     await expect(page.locator('text="File Size Exceeds Limit"')).toBeVisible();
 });
