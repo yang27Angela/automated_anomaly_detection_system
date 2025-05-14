@@ -25,10 +25,17 @@ export default function MainPage() {
   const [requirePerson, setRequirePerson] = useState(true);
   const [requireCar, setRequireCar] = useState(false);
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+// New Code Block for File Size Check
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+ const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
+    if (file.size > MAX_FILE_SIZE) {
+      setError('File Size Exceeds Limit (Max 10MB)');
+      setLoading(false); // Ensure loading state is reset
+      return;
+    }
     setLoading(true);
     setError('');
     try {
