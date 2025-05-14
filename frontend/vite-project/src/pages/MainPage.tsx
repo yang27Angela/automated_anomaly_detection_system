@@ -21,19 +21,19 @@ export default function MainPage() {
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState(false);  // ✅ 新增 success 状态
   const [search, setSearch] = useState('');
   const [requirePerson, setRequirePerson] = useState(true);
   const [requireCar, setRequireCar] = useState(false);
 
-// New Code Block for File Size Check
-const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 
- const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > MAX_FILE_SIZE) {
       setError('File Size Exceeds Limit (Max 10MB)');
-      setLoading(false); // Ensure loading state is reset
+      setLoading(false);
       return;
     }
     setLoading(true);
@@ -57,6 +57,7 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
       if (!res.ok) throw new Error(data.message || 'Upload failed');
 
       setAlerts(alertsWithTimestamps);
+      setSuccess(true);  // ✅ 上传成功后提示
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -143,6 +144,10 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
       <Snackbar open={!!error} autoHideDuration={4000} onClose={() => setError('')}>
         <MuiAlert severity="error">{error}</MuiAlert>
       </Snackbar>
+
+      <Snackbar open={success} autoHideDuration={4000} onClose={() => setSuccess(false)}>
+        <MuiAlert severity="success">Upload Successful</MuiAlert>
+      </Snackbar> {/* ✅ 新增成功提示 */}
     </div>
   );
 }
