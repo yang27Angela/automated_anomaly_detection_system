@@ -1,0 +1,14 @@
+stages:
+  - test
+
+bypass_e2e_test:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.42.1-jammy
+  script:
+    - echo "Running Playwright Bypass E2E Tests"
+    - cd frontend/vite-project
+    - node src/pages/__tests__/upload-end-to-end.bypass.test.js
+  artifacts:
+    paths:
+      - test-results/
+    expire_in: 1 week
