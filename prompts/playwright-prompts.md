@@ -18,10 +18,9 @@
 ---
 
 ## Prompt 2  
-> I need a Gherkin feature file and an end-to-end Playwright test script.
+> I need an end-to-end Playwright test script based on my Gherkin feature file.
 
 ### Result  
-- Generated `upload_feature.feature` file.  
 - Generated `upload-end-to-end.playwright.test.js` file.
 
 ---
