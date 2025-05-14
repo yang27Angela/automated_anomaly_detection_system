@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Typography,
   CircularProgress,
@@ -21,7 +21,7 @@ export default function MainPage() {
   const [selectedAlert, setSelectedAlert] = useState<Alert | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [success, setSuccess] = useState(false);  // ✅ 新增 success 状态
+  const [success, setSuccess] = useState(false);
   const [search, setSearch] = useState('');
   const [requirePerson, setRequirePerson] = useState(true);
   const [requireCar, setRequireCar] = useState(false);
@@ -33,7 +33,6 @@ export default function MainPage() {
     if (!file) return;
     if (file.size > MAX_FILE_SIZE) {
       setError('File Size Exceeds Limit (Max 10MB)');
-      setLoading(false);
       return;
     }
     setLoading(true);
@@ -56,8 +55,9 @@ export default function MainPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || 'Upload failed');
 
+      setError(''); // ✅ 清除错误
       setAlerts(alertsWithTimestamps);
-      setSuccess(true);  // ✅ 上传成功后提示
+      setSuccess(true);  // ✅ 成功提示
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
@@ -82,6 +82,13 @@ export default function MainPage() {
       (!requirePerson || hasPerson) &&
       (!requireCar || hasCar);
   });
+
+  // ✅ 追踪 success 状态变化
+  useEffect(() => {
+    if (success) {
+      console.log('✅ Success Snackbar triggered');
+    }
+  }, [success]);
 
   return (
     <div style={{ padding: 20 }}>
@@ -141,13 +148,33 @@ export default function MainPage() {
         readOnly
       />
 
-      <Snackbar open={!!error} autoHideDuration={4000} onClose={() => setError('')}>
-        <MuiAlert severity="error">{error}</MuiAlert>
+      {/* ✅ 错误提示 */}
+      <Snackbar
+        open={!!error}
+        autoHideDuration={5000}
+        onClose={() => setError('')}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <MuiAlert elevation={6} variant="filled" severity="error">
+          {error}
+        </MuiAlert>
       </Snackbar>
 
-      <Snackbar open={success} autoHideDuration={4000} onClose={() => setSuccess(false)}>
-        <MuiAlert severity="success">Upload Successful</MuiAlert>
-      </Snackbar> {/* ✅ 新增成功提示 */}
+      {/* ✅ 成功提示 */}
+      <Snackbar
+        open={success}
+        autoHideDuration={5000}
+        onClose={(event, reason) => {
+          if (reason !== 'clickaway') {
+            setSuccess(false);
+          }
+        }}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <MuiAlert elevation={6} variant="filled" severity="success">
+          Upload Successful
+        </MuiAlert>
+      </Snackbar>
     </div>
   );
 }
