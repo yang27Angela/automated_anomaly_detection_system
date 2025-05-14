@@ -6,6 +6,7 @@ export default defineConfig({
   build: {
     assetsInclude: ['**/*.wasm'],
     outDir: 'dist', // 默认即可
+    reportCompressedSize: false,
   },
   optimizeDeps: {
     include: ['react', 'react-dom'],
